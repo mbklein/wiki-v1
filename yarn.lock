@@ -62,6 +62,27 @@
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@panter/vue-i18next/-/vue-i18next-0.5.1.tgz#714bbeb62c25850231f2681ad11142d3c6e3c645"
 
+"@passport-next/passport-google-oauth2@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@passport-next/passport-google-oauth2/-/passport-google-oauth2-1.0.0.tgz#cadef72d9ef42d549a5578eab338febdf234f806"
+  integrity sha512-rbAtK0eGgjQhT/MqMSuN7Mxy4XTr1/LINk5rYPVezP3MfkVYuK20V0XW9fg1ikFMvyxSdmfLTyYduud7SfFSqw==
+  dependencies:
+    "@passport-next/passport-oauth2" "1.7.x"
+
+"@passport-next/passport-oauth2@1.7.x":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@passport-next/passport-oauth2/-/passport-oauth2-1.7.1.tgz#c505d3b6339d5da5fafe80d7da10ec0e94143d5b"
+  integrity sha512-rCNznNTnUbMxTyOMCdeM2VcQvHI1CM0F07Hvao4kYDgAx59xk+QxiR6ax6ZIBrCE3glCy+pOaTQfXowXxwb4lg==
+  dependencies:
+    "@passport-next/passport-strategy" "1.1.x"
+    lodash "^4.17.11"
+    oauth "0.9.x"
+
+"@passport-next/passport-strategy@1.1.x":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@passport-next/passport-strategy/-/passport-strategy-1.1.0.tgz#4c0df069e2ec9262791b9ef1e23320c1d73bdb74"
+  integrity sha512-2KhFjtPueJG6xVj2HnqXt9BlANOfYCVLyu+pXYjPGBDT8yk+vQwc/6tsceIj+mayKcoxMau2JimggXRPHgoc8w==
+
 "@types/express-serve-static-core@*":
   version "4.0.49"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.49.tgz#3438d68d26e39db934ba941f18e3862a1beeb722"
@@ -4505,6 +4526,11 @@ lodash@4.17.4, lodash@^4.0.0, lodash@^4.1.0, lodash@^4.14.0, lodash@^4.15.0, lod
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
+lodash@^4.17.11:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
 log-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
@@ -5233,6 +5259,11 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+openam@>=0.0.1:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/openam/-/openam-0.0.6.tgz#ad00d726f67494027b57d83198a0d5f47ed5883e"
+  integrity sha1-rQDXJvZ0lAJ7V9gxmKDV9H7ViD4=
+
 opencollective@^1.0.3, opencollective@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/opencollective/-/opencollective-1.0.3.tgz#aee6372bc28144583690c3ca8daecfc120dd0ef1"
@@ -5441,12 +5472,6 @@ passport-github2@~0.1.10:
   dependencies:
     passport-oauth2 "1.x.x"
 
-passport-google-oauth20@~1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/passport-google-oauth20/-/passport-google-oauth20-1.0.0.tgz#3b960e8a1d70d1dbe794615c827c68c40392a5d0"
-  dependencies:
-    passport-oauth2 "1.x.x"
-
 passport-ldapauth@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/passport-ldapauth/-/passport-ldapauth-2.0.0.tgz#42dff004417185d0a4d9f776a3eed8d4731fd689"
@@ -5494,6 +5519,15 @@ passport-oauth@~0.1.1:
     passport "~0.1.1"
     pkginfo "0.2.x"
 
+passport-openam@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/passport-openam/-/passport-openam-0.0.3.tgz#0c032680440a7efe26e3af133f3e2b203e7b99ed"
+  integrity sha1-DAMmgEQKfv4m468TPz4rID57me0=
+  dependencies:
+    openam ">=0.0.1"
+    passport ">=0.1.1"
+    pkginfo "0.2.x"
+
 passport-openidconnect@~0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/passport-openidconnect/-/passport-openidconnect-0.0.2.tgz#e488f8bdb386c9a9fd39c91d5ab8c880156e8153"
@@ -5526,19 +5560,19 @@ passport.socketio@~3.7.0:
   dependencies:
     xtend "^4.0.0"
 
+passport@>=0.1.1, passport@~0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/passport/-/passport-0.4.0.tgz#c5095691347bd5ad3b5e180238c3914d16f05811"
+  dependencies:
+    passport-strategy "1.x.x"
+    pause "0.0.1"
+
 passport@~0.1.1:
   version "0.1.18"
   resolved "https://registry.yarnpkg.com/passport/-/passport-0.1.18.tgz#c8264479dcb6414cadbb66752d12b37e0b6525a1"
   dependencies:
     pause "0.0.1"
     pkginfo "0.2.x"
-
-passport@~0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/passport/-/passport-0.4.0.tgz#c5095691347bd5ad3b5e180238c3914d16f05811"
-  dependencies:
-    passport-strategy "1.x.x"
-    pause "0.0.1"
 
 path-exists@^2.0.0:
   version "2.1.0"

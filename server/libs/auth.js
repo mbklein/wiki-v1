@@ -51,6 +51,30 @@ module.exports = function (passport) {
       ))
   }
 
+  // Northwestern SSO
+  if (appconfig.auth.openam && appconfig.auth.openam.enabled) {
+    const OpenAMStrategy = require('passport-openam').Strategy
+    passport.use('openam',
+      new OpenAMStrategy({
+        openAmBaseUrl: 'https://websso.it.northwestern.edu/amserver/',
+        openAmCookieName: 'openAMssoToken',
+        callbackUrl: appconfig.host + '/login/openam/callback'
+      }, async (_token, profile, cb) => {
+        let user = {
+          provider: 'openam',
+          id: profile.username,
+          email: profile.email,
+          name: profile._raw.givenName + ' ' + profile._raw.sn
+        }
+        db.User.processProfile(user).then((user) => {
+          return cb(null, user) || true
+        }).catch((err) => {
+          return cb(err, null) || true
+        })
+      })
+    )
+  }
+
   // Google ID
 
   if (appconfig.auth.google && appconfig.auth.google.enabled) {

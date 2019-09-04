@@ -1,18 +1,23 @@
-FROM node:8-alpine
+FROM node:8-stretch-slim
 LABEL maintainer="requarks.io"
 
-RUN apk update && \
-    apk add bash curl git openssh supervisor --no-cache && \
+RUN apt-get update -qq && \
+    apt-get install -y bash curl git openssl && \
+    apt-get clean && \
     mkdir -p /var/wiki && \
     mkdir -p /logs
 
 WORKDIR /var/wiki
 
-COPY supervisord.conf /etc/supervisord.conf
 COPY . /var/wiki
+RUN yarn install && \
+    yarn build
 
 ENV WIKI_JS_HEROKU=1
 
 EXPOSE 3000
 
-CMD ["supervisord", "--nodaemon", "-c", "/etc/supervisord.conf"]
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /usr/sbin/wait-for-it
+RUN chmod 0755 /usr/sbin/wait-for-it
+ENTRYPOINT ["/usr/sbin/wait-for-it", "mongo:27017", "-t", "30", "--", "node"]
+CMD ["server"]

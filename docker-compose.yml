@@ -1,0 +1,22 @@
+---
+version: "3.7"
+services:
+  wiki:
+    depends_on:
+      - mongo
+    image: nulib/wikijs:1.0.117
+    build:
+      context: .
+      dockerfile: tools/build/Dockerfile
+    environment:
+      WIKI_ADMIN_EMAIL: $WIKI_ADMIN_EMAIL
+    ports:
+      - 3000:3000
+    restart: on-failure
+    volumes:
+      - ./config.yml:/var/wiki/config.yml
+  mongo:
+    image: mongo
+    restart: on-failure
+    volumes:
+      - ./data/mongodb:/data/db

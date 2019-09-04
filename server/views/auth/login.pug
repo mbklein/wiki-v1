@@ -44,6 +44,10 @@ html(data-logic='login')
             span= t('auth:loginusingalt')
           else
             span= t('auth:loginusing')
+          if appconfig.auth.openam && appconfig.auth.openam.enabled
+            button.ms(onclick='window.location.assign("/login/openam")')
+              i.icon-openam
+              span= t('auth:providers.openam')
           if appconfig.auth.microsoft && appconfig.auth.microsoft.enabled
             button.ms(onclick='window.location.assign("/login/ms")')
               i.icon-windows2

@@ -91,6 +91,7 @@ router.post('/login', bruteforce.prevent, function (req, res, next) {
  * Social Login
  */
 
+router.get('/login/openam', passport.authenticate('openam'))
 router.get('/login/ms', passport.authenticate('windowslive', { scope: ['wl.signin', 'wl.basic', 'wl.emails'] }))
 router.get('/login/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 router.get('/login/facebook', passport.authenticate('facebook', { scope: ['public_profile', 'email'] }))
@@ -100,6 +101,7 @@ router.get('/login/azure', passport.authenticate('azure_ad_oauth2'))
 router.get('/login/oauth2', passport.authenticate('oauth2'))
 router.get('/login/oidc', passport.authenticate('oidc'))
 
+router.get('/login/openam/callback', passport.authenticate('openam', { failureRedirect: '/login', successRedirect: '/' }))
 router.get('/login/ms/callback', passport.authenticate('windowslive', { failureRedirect: '/login', successRedirect: '/' }))
 router.get('/login/google/callback', passport.authenticate('google', { failureRedirect: '/login', successRedirect: '/' }))
 router.get('/login/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login', successRedirect: '/' }))
